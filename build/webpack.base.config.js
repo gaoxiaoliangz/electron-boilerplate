@@ -20,6 +20,23 @@ module.exports = env => {
     module: {
       rules: [
         {
+          test: /\.scss$/,
+          use: [
+            require.resolve('style-loader'),
+            {
+              loader: require.resolve('css-loader'),
+              query: {
+                sourceMap: true,
+                modules: false,
+                importLoaders: 1,
+              }
+            },
+            {
+              loader: require.resolve('sass-loader')
+            }
+          ]
+        },
+        {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: ["babel-loader"]
