@@ -13,13 +13,14 @@ module.exports = env => {
     resolve: {
       alias: {
         env: path.resolve(__dirname, `../config/env_${env}.json`)
-      }
+      },
+      extensions: ['.js', '.jsx'],
     },
     devtool: "source-map",
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: ["babel-loader"]
         },

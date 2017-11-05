@@ -27,17 +27,21 @@
     "pree2e": "webpack --config=build/webpack.app.config.js --env=test --display=none && webpack --config=build/webpack.e2e.config.js --env=test --display=none",
     "e2e": "mocha temp/e2e.js --require source-map-support/register",
     "test": "npm run unit && npm run e2e",
-    "start": "node build/start.js",
+    "start": "NODE_ENV=development node build/start.js",
     "release": "npm test && webpack --config=build/webpack.app.config.js --env=production && build"
   },
   "dependencies": {
-    "fs-jetpack": "^1.0.0"
+    "babel-preset-react-app": "^3.1.0",
+    "fs-jetpack": "^1.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.5",
     "@babel/preset-env": "^7.0.0-beta.5",
-    "babel-loader": "^8.0.0-beta.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
     "chai": "^4.1.0",
     "css-loader": "^0.28.7",
     "electron": "^1.6.11",

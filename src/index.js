@@ -8,10 +8,11 @@ import "./helpers/external_links.js";
 // Everything below is just to show you how it works. You can delete all of it.
 // ----------------------------------------------------------------------------
 
-import { remote } from "electron";
+import electron, { remote } from "electron";
 import jetpack from "fs-jetpack";
 import { greet } from "./hello_world/hello_world";
 import env from "env";
+import fs from 'fs'
 
 const app = remote.app;
 const appDir = jetpack.cwd(app.getAppPath());
@@ -33,3 +34,36 @@ document.querySelector("#author").innerHTML = manifest.author;
 document.querySelector("#env").innerHTML = env.name;
 document.querySelector("#electron-version").innerHTML =
   process.versions.electron;
+
+console.log(remote)
+
+const dialog = remote.dialog
+
+document.querySelector('.btn-open').addEventListener('click', () => {
+  // remote.dialog.showOpenDialog({ properties: ['openFile', 'openDirectory', 'multiSelections'] })
+  dialog.showOpenDialog((fileNames) => {
+    console.log(fileNames)
+    // // fileNames is an array that contains all the selected
+    // if (fileNames === undefined) {
+    //   console.log("No file selected");
+    //   return;
+    // }
+
+    // fs.readFile(filepath, 'utf-8', (err, data) => {
+    //   if (err) {
+    //     alert("An error ocurred reading the file :" + err.message);
+    //     return;
+    //   }
+
+    //   // Change how to handle the file content
+    //   console.log("The file content is : " + data);
+    // });
+  });
+})
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
