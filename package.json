@@ -21,14 +21,14 @@
     "publish": null
   },
   "scripts": {
-    "postinstall": "install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "preunit": "webpack --config=build/webpack.unit.config.js --env=test --display=none",
     "unit": "electron-mocha temp/specs.js --renderer --require source-map-support/register",
     "pree2e": "webpack --config=build/webpack.app.config.js --env=test --display=none && webpack --config=build/webpack.e2e.config.js --env=test --display=none",
     "e2e": "mocha temp/e2e.js --require source-map-support/register",
     "test": "npm run unit && npm run e2e",
     "start": "NODE_ENV=development node build/start.js",
-    "release": "npm test && webpack --config=build/webpack.app.config.js --env=production && build"
+    "release": "npm test && webpack --config=build/webpack.app.config.js --env=production && electron-build"
   },
   "dependencies": {
     "babel-preset-react-app": "^3.1.0",
@@ -44,7 +44,7 @@
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.0",
     "css-loader": "^0.28.7",
-    "electron": "^1.6.11",
+    "electron": "1.7.9",
     "electron-builder": "^19.43.3",
     "electron-mocha": "^4.0.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
