@@ -1,4 +1,4 @@
-# electron-boilerplate
+# electron-react-starter
 
 A minimalistic boilerplate for [Electron runtime](http://electron.atom.io). Tested on macOS, Windows and Linux.  
 
